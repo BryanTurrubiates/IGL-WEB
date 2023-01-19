@@ -2,6 +2,11 @@
     --backgroundColorMain: #F7F8FA;
 }
 
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     background-color: var(--backgroundColorMain);
+    margin: 0;
 }

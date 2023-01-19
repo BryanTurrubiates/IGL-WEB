@@ -1,5 +1,5 @@
-import './frontend/CSS/stylesApp.css';
-import { Navbar } from './frontend/NavBar/Nav';
+import './frontend/Home/CSS/stylesApp.css';
+import { Navbar } from './frontend/Home/NavBar/Nav';
 
 
 function App() {
