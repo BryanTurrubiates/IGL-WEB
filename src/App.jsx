@@ -1,13 +1,17 @@
-import './frontend/Home/CSS/stylesApp.css';
-import { Navbar } from './frontend/Home/NavBar/Nav';
+import './frontend/Home/CSS/stylesApp.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Login } from './frontend/Authentication/Login'
+import { HomePage } from './frontend/Home/Home'
 
-
-function App() {
-
+function App () {
   return (
-    <>
-      <Navbar />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element=<Navigate to='/login' /> />
+        <Route path='/login' element=<Login /> />
+        <Route path='/home' element=<HomePage /> />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

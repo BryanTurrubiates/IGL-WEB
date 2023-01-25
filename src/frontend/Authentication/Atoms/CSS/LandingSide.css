@@ -1,0 +1,27 @@
+:root {
+  --SemanticColor: #00ADEF;
+  --SecundaryColor: #7AC042;
+  --PrimaryColor: #3361FF;
+}
+
+.__Content-LandingSide {
+  display: flex;
+  flex-direction: column;
+  gap: 60px ;
+
+}
+
+.__titleHola {
+  display: flex;
+  flex-direction: column;
+  color: var(--SemanticColor);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 2.7rem;
+}
+
+.__titleSaludo {
+  color: var(--SecundaryColor);
+  font-size: 48px;
+  font-weight: 600;
+}

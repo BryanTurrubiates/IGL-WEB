@@ -1,8 +1,11 @@
-import { RxExit } from "react-icons/rx";
-import { useState } from "react";
+import { RxExit } from 'react-icons/rx'
+import { useContext } from 'react'
+import { AuthContext } from '../../../Context/User/UserContext'
 
 export function ButtonExit () {
-
-    return <button className="btnExitSession"><RxExit className="iconBtn"/></button>
-    
+  const [usuario, setUsuario] = useContext(AuthContext)
+  const logOut = () => {
+    if (usuario) { setUsuario(false) }
+  }
+  return <button className='btnExitSession' onClick={logOut}><RxExit className='iconBtn' /></button>
 }

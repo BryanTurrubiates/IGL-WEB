@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import logoIGL from '../../../assets/IGL_Logo.png'
+import logoIGL from '../../../assets/IGL_Logo1.svg'
 import './styles/navbar.css'
 import { SearchBar } from './Atoms/Searchbar'
 import { ButtonExit } from './Atoms/ButtonExit'
@@ -24,6 +24,9 @@ export function Navbar () {
           </div>
         </div>
       </nav>
+      <div className='tabsContainer'>
+        <p>Tab1</p>
+      </div>
       <div className={SideBar ? 'sidebar-active' : 'sidebar-menu'}>
         <ul className='__sideBar-items'>
           <li className='__sidebar-toggle'>

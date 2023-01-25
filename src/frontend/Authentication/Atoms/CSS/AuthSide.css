@@ -1,0 +1,169 @@
+:root {
+  --SemanticColor: #00ADEF;
+  --SecundaryColor: #7AC042;
+  --PrimaryColor: #3361FF;
+  --AscentColor: #0084F0;
+  --backgroundInput: #F7F8FA;
+  --stroke: #EFEFF0;
+  --sectionButtonsColor: #D9D9D9;
+  --hoverColorButtonsGreen: #89c557;
+  --hoverColorButtonsBlue: #2191ec;
+}
+
+.__Container-AuthSide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.__Content-AuthSide {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.__Content-AuthSide-Logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.__Content-AuthSide-Logo-img{
+  height: 80px;
+}
+
+.__Content-AuthSide-Form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 23px;
+}
+
+.__Content-AuthSide-Form-Content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.__Content-AuthSide-Form-Label {
+  color: var(--AscentColor);
+  font-size: 20px;
+}
+
+.__Content-AuthSide-Form-ContainerInput {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon-Form {
+  position: absolute;
+  left: 25px;
+  font-size: 24px;
+  color: var(--AscentColor);
+}
+
+.__Content-AuthSide-Form-Input {
+  width: 100%;
+  height: 60px;
+  padding-left: 55px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: var(--AscentColor);
+  border: none;
+  background-color: var(--backgroundInput);
+  border: 1px solid var(--stroke);
+}
+
+.__Content-AuthSide-Form-Input:focus {
+  outline: var(--AscentColor);
+  border: 1px solid var(--AscentColor);
+}
+.__Content-AuthSide-Form-Input:hover {
+  border: 1px solid var(--AscentColor);
+}
+
+.__Content-AuthSide-Form-Button {
+  width: 80%;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--AscentColor);
+  color: white;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.__Content-AuthSide-Form-Button:focus {
+  outline: none;
+  border: 1px solid var(--PrimaryColor);
+} 
+.__Content-AuthSide-Form-Button:hover {
+  background-color: var(--hoverColorButtonsBlue);
+} 
+
+.arrowIcons {
+  position: absolute;
+  right: 30px;
+}
+
+.__Content-AuthSIde-Form-Separation {
+  width: 80%;
+}
+
+.sectionText {
+  font-size: 15px;
+  color: var(--sectionButtonsColor);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+  column-gap: 5px;
+}
+
+.sectionText::before , .sectionText::after {
+  content: "";
+  height: 2px;
+  background-color: var(--sectionButtonsColor);
+  display: block;
+}
+
+.__Content-AuthSide-Form-Buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.__Content-AuthSide-Form-Button-redirect {
+  width: 80%;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--SecundaryColor);
+  color: white;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.__Content-AuthSide-Form-Button-redirect:focus {
+  outline: none;
+  border: 1px solid var(--stroke);
+} 
+
+.__Content-AuthSide-Form-Button-redirect:hover {
+  background-color: var(--hoverColorButtonsGreen);
+}
