@@ -20,7 +20,8 @@ export function FormLogin () {
     const UserNameV = DataInput.inputUsuarioAuth.value
     const Auth = AuthUser(UserNameV, passwordV)
     Auth.then(response => {
-      if (response === 'Sesion Iniciada') { setUsuario(true) } else {
+      const { mensaje, idUsuario, nombreUsuario } = response
+      if (mensaje === 'Exito') { setUsuario({ idUsuarioR: idUsuario, nombre: nombreUsuario }) } else {
         setUsuario(false)
         toast('Error de Autenticacion', { duration: 2000, icon: '❌' })
         DataInput.inputPasswordAuth.value = ''

@@ -11,3 +11,12 @@ export async function AuthUser (userName, passwordUser) {
   //  console.log(DataResponse)
   return DataResponse
 }
+
+export function logOutUser () {
+  fetch('http://192.168.80.220:8080/proyecto/public_html/BackendSistemaWeb/API.php', {
+    method: 'POST',
+    body: new URLSearchParams({
+      logOut: true
+    })
+  })
+}
