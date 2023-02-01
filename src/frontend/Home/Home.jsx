@@ -1,7 +1,9 @@
 import { useContext } from 'react'
 import { AuthContext } from '../Context/User/UserContext'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Navbar } from './NavBar/Nav'
+import { Modules } from './Sections/Sections'
+import { ModuleContext } from '../Context/ModulesSystem/moduleState'
 
 export function HomePage () {
   const [usuario] = useContext(AuthContext)
@@ -10,7 +12,12 @@ export function HomePage () {
   } else {
     return (
       <div className='__HomePage-Container'>
-        <Navbar />
+        <ModuleContext>
+          <Navbar />
+          <Routes>
+            <Route path='/:topic' element=<Modules /> />
+          </Routes>
+        </ModuleContext>
       </div>
     )
   }

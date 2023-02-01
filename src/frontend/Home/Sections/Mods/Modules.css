@@ -1,0 +1,43 @@
+:root {
+  --borderColors: #DFE0E1;
+  --controlsColor: #FFFFFF;
+  --colorButtonsExit: #FA4141;
+  --colorTopicText : #3361FF;
+  --colorModuleText : #727272;
+}
+
+.__MainModulesView-Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.__MainModulesView-Content {
+  width: 1600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.__MainModulesView-Title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: white;
+  padding: 12px;
+  font-size: 19px;
+  border-radius: 10px;
+  color: var(--colorTopicText);
+  box-shadow: 4px 2px 13px rgba(0, 0, 0, 0.03);
+}
+
+.iconTitle {
+  font-size: 32px;
+}
+
+.__MainModulesView-ContainerModules {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 33px;
+}

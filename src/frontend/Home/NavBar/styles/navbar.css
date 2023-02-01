@@ -71,7 +71,8 @@
 
 .sidebar-active {
     width: 380px;
-    height: 100vh;
+    height: 97vh;
+    overflow-y: scroll;
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -81,6 +82,19 @@
     left: 0;
     border-right: #ECECEC 1px solid;
     transition: 350ms;
+}
+
+.sidebar-active::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-active::-webkit-scrollbar-track {
+    background: #ECECEC;
+}
+
+.sidebar-active::-webkit-scrollbar-thumb {
+    background-color: var(--borderColors);
+    border-radius: 20px;
 }
 
 .__sideBar-items {
@@ -118,7 +132,7 @@
     background-color: #FFFFFF;
     color: var(--colorModuleText);
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 20px;
     gap: 10px;
@@ -127,4 +141,22 @@
 .__Module-text:hover {
     color: var(--colorTopicText);
     cursor: pointer;
+}
+
+.__icon-sidebar {
+    font-size: 25px;
+}
+
+.__module-Content{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.linksRouters {
+    text-decoration: none;
+    color: var(--colorModuleText);
+}
+.linksRouters:hover {
+    color: var(--colorTopicText);
 }
