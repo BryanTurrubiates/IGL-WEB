@@ -9,7 +9,6 @@ function App () {
       <Routes>
         <Route path='/' element=<Navigate to='/login' /> />
         <Route path='/login' element=<Login /> />
-        <Route path='/home' element=<HomePage /> />
         <Route path='/home/*' element=<HomePage /> />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,9 @@ import { AuthContext } from '../Context/User/UserContext'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Navbar } from './NavBar/Nav'
 import { Modules } from './Sections/Sections'
+import { ModuleLoad } from '../Home/Sections/Views/ModuleLoad'
 import { ModuleContext } from '../Context/ModulesSystem/moduleState'
+import { TabsContextProvider } from '../Context/TabsContext/TabsState'
 
 export function HomePage () {
   const [usuario] = useContext(AuthContext)
@@ -13,10 +15,13 @@ export function HomePage () {
     return (
       <div className='__HomePage-Container'>
         <ModuleContext>
-          <Navbar />
-          <Routes>
-            <Route path='/:topic' element=<Modules /> />
-          </Routes>
+          <TabsContextProvider>
+            <Navbar />
+            <Routes>
+              <Route path='/:topic' element=<Modules /> />
+              <Route path='/:topic/:module' element=<ModuleLoad /> />
+            </Routes>
+          </TabsContextProvider>
         </ModuleContext>
       </div>
     )

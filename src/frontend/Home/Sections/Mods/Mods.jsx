@@ -8,7 +8,7 @@ import './Modules.css'
 export function ModulesView ({ topicToShow }) {
   const { topic } = useParams()
   const [modulesIGL] = useContext(ModulesSystem)
-  const ModulesToShow = modulesIGL.filter(module => module.idPadreI === topicToShow)
+  const ModulesToShow = modulesIGL.filter(module => module.idPadreI === topicToShow && module.idPadreI !== module.idModuloI)
   return (
     <div className='__MainModulesView-Container'>
       <div className='__MainModulesView-Content'>
