@@ -4,6 +4,7 @@
     --colorButtonsExit: #FA4141;
     --colorTopicText : #3361FF;
     --colorModuleText : #727272;
+    --SecundaryColor: #7AC042;
 }
 
 .__Navbar-Container {
@@ -136,6 +137,38 @@
     font-weight: bold;
     padding: 20px;
     gap: 10px;
+}
+
+.__Module-textSubFolder {
+    width: 300px;
+    display: flex;
+    align-items: center ;
+    border-bottom: var(--colorModuleText) 2px solid;
+    border-top: var(--borderColors) 1px solid;
+    border-left: var(--borderColors) 1px solid;
+    border-right: var(--borderColors) 1px solid;
+    background-color: #FFFFFF;
+    color: var(--colorModuleText);
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 10px;
+    padding-left: 20px;
+    gap: 10px;
+}
+
+.__Module-textSubFolder:hover {
+    color: var(--SecundaryColor);
+}
+
+.linksRoutersSubFolder {
+    color: var(--colorModuleText);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.linksRoutersSubFolder:hover {
+    color: var(--SecundaryColor);
 }
 
 .__Module-text:hover {

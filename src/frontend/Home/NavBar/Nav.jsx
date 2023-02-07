@@ -50,11 +50,12 @@ export function Navbar () {
           </li>
           {
             TopicsSidebar.map(module => {
+              console.log(module)
               return (
-                <li key={module.idModuloI} className='__Module-text' onClick={showSidebar}>
+                <li key={module.idModuloI} className={module.idPadreSubCarpetaI === null ? '__Module-text' : '__Module-textSubFolder'} onClick={showSidebar}>
                   <div className='__module-Content'>
                     <MdViewModule className='__icon-sidebar' />
-                    <Link to={module.nombreV} className='linksRouters'>{module.nombreV.toUpperCase()}</Link>
+                    <Link to={module.nombreV} className={module.idPadreSubCarpetaI === null ? 'linksRouters' : 'linksRoutersSubFolder'}>{module.nombreV.toUpperCase()}</Link>
                   </div>
                 </li>
               )

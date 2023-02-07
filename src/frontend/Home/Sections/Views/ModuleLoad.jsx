@@ -1,12 +1,14 @@
-import { useParams } from 'react-router-dom'
 import { TabsView } from '../Tabs/Tabs'
+import { PagePreview } from './ModuleToLoad'
+import './ModulesLoaded.css'
 
 export function ModuleLoad () {
-  const { module } = useParams()
   return (
     <>
       <TabsView />
-      <p>Cargar modulo {module}</p>
+      <div className='__MainModuleLoad' id='__ModuleToLoad'>
+        <PagePreview />
+      </div>
     </>
   )
 }
