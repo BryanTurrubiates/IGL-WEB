@@ -32,3 +32,15 @@
   padding-top: 116px;
   background-color: var(--backgroundAuthSide);
 }
+
+@media (max-width: 1600px) {
+
+  .__MainContainer-Login-LandingSide {
+    padding-top: 50px
+  }
+
+  .__MainContainer-Login-AuthSide {
+    padding-top: 50px;
+  }
+
+}

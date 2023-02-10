@@ -9,8 +9,9 @@ import { TabsContextProvider } from '../Context/TabsContext/TabsState'
 
 export function HomePage () {
   const [usuario] = useContext(AuthContext)
+  const pathMODE = import.meta.env.VITE_URL
   if (!usuario) {
-    return <Navigate to='/login' />
+    return <Navigate to={`${pathMODE}/IGL-WEB/login`} />
   } else {
     return (
       <div className='__HomePage-Container'>

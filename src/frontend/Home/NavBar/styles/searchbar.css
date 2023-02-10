@@ -44,4 +44,22 @@
     width: 170px;
 }
 
+@media (max-width: 1600px) {
 
+    .searchBar-input {
+        height: 42px;
+    }
+
+    .searchIcon {
+        right: 35px;
+    }
+
+    .iconSearch {
+        font-size: 26px;
+    }
+
+    #__MenuHamburguesa-Icon {
+        width: 35px;
+        height: 40px;
+    }
+}

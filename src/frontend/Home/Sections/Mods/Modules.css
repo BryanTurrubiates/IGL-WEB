@@ -41,3 +41,10 @@
   grid-column-gap: 15px;
   grid-row-gap: 33px;
 }
+
+@media (max-width:1600px) {
+  .__MainModulesView-Content {
+    width: 1300px;
+  }
+
+}

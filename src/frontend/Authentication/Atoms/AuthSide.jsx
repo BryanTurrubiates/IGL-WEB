@@ -11,6 +11,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { goTickets, goOldIGL } from '../../Services/redirects.js'
 
 export function FormLogin () {
+  const pathMODE = import.meta.env.VITE_URL
   const [usuario, setUsuario] = useContext(AuthContext)
 
   const handleClickLogin = (event) => {
@@ -29,7 +30,7 @@ export function FormLogin () {
       }
     })
   }
-  if (usuario) { return <Navigate to='/home' /> } else {
+  if (usuario) { return <Navigate to={`${pathMODE}/IGL-WEB/home`} /> } else {
     return (
       <div className='__Container-AuthSide'>
         <div className='__Content-AuthSide'>

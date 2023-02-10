@@ -193,3 +193,43 @@
 .linksRouters:hover {
     color: var(--colorTopicText);
 }
+
+@media (max-width: 1600px) {
+
+    .__Navbar-Content {
+        width: 1300px;
+    }
+
+    .logoIGL {
+        width: 120px;
+    }
+
+    .linksRouters {
+        font-size: 18px;
+    }
+
+    .btnExitSession {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+    }
+
+    .__sidebar-toggle-icon {
+        font-size: 25px;
+    } 
+
+    .__Module-text {
+        padding: 15px;
+    }
+
+    .__Module-textSubFolder {
+        width: 310px;
+        padding: 5px;
+        padding-left: 15px;
+    }
+
+    .linksRoutersSubFolder {
+        font-size: 15px;
+    }
+
+}

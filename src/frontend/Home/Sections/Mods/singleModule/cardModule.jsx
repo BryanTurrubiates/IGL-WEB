@@ -7,13 +7,14 @@ import { useContext } from 'react'
 export function CardModule ({ nombreModulo, pathModulo }) {
   const [tabs, setTabs] = useContext(TabsContext)
   const { topic } = useParams()
+  const pathMODE = import.meta.env.VITE_URL
 
   const handleClickModule = (event) => {
     event.preventDefault()
-    if (!tabs) { setTabs({ nombreTab: nombreModulo, path: `/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }) }
+    if (!tabs) { setTabs({ nombreTab: nombreModulo, path: `${pathMODE}/IGL-WEB/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }) }
     const exists = tabs.find(element => element.nombreTab === nombreModulo)
     if (exists === undefined) {
-      setTabs([...tabs, { nombreTab: nombreModulo, path: `/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }])
+      setTabs([...tabs, { nombreTab: nombreModulo, path: `${pathMODE}/IGL-WEB/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }])
     }
   }
   return (

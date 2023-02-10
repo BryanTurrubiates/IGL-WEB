@@ -6,8 +6,9 @@ import { TabsContext } from '../../../../Context/TabsContext/TabsContext'
 import { Link } from 'react-router-dom'
 
 export function TabTopic ({ TabName }) {
+  const pathMODE = import.meta.env.VITE_URL
   return (
-    <Link to={`/home/${TabName}`} className='__Tab-NameActive'><span className='IconTab'><MdViewModule /></span> {TabName}</Link>
+    <Link to={`${pathMODE}/IGL-WEB/home/${TabName}`} className='__Tab-NameActive'><span className='IconTab'><MdViewModule /></span> {TabName}</Link>
   )
 }
 
