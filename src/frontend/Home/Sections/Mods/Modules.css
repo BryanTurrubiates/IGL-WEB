@@ -40,9 +40,17 @@
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 33px;
+  height: 73vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.__MainModulesView-ContainerModules::-webkit-scrollbar {
+  width: 0;
 }
 
 @media (max-width:1600px) {
+
   .__MainModulesView-Content {
     width: 1300px;
   }

@@ -30,13 +30,16 @@ export function Navbar () {
   }
 
   const TopicsSidebar = modules.filter(module => module.idPadreI === module.idModuloI)
+  const pathMODE = import.meta.env.VITE_URL
 
   return (
     <>
       <nav className='__Navbar-Container'>
         <div className='__Navbar-Content'>
           <FiMenu id='__MenuHamburguesa-Icon' onClick={showSidebar} />
-          <img src={logoIGL} alt='Logo' className='logoIGL' />
+          <Link to={`${pathMODE}/IGL-WEB/login`}>
+            <img src={logoIGL} alt='Logo' className='logoIGL' />
+          </Link>
           <div className='__Navbar-Content-Controls'>
             <SearchBar />
             <ButtonExit />

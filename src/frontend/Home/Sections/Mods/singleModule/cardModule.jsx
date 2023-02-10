@@ -10,7 +10,6 @@ export function CardModule ({ nombreModulo, pathModulo }) {
   const pathMODE = import.meta.env.VITE_URL
 
   const handleClickModule = (event) => {
-    event.preventDefault()
     if (!tabs) { setTabs({ nombreTab: nombreModulo, path: `${pathMODE}/IGL-WEB/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }) }
     const exists = tabs.find(element => element.nombreTab === nombreModulo)
     if (exists === undefined) {
