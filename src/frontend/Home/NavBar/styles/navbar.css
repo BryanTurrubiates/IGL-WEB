@@ -83,6 +83,7 @@
     left: 0;
     border-right: #ECECEC 1px solid;
     transition: 350ms;
+    z-index: 2;
 }
 
 .sidebar-active::-webkit-scrollbar {
