@@ -25,7 +25,6 @@ export function FormLogin () {
         setUsuario(false)
         toast('Error de Autenticacion', { duration: 2000, icon: '❌' })
         DataInput.inputPasswordAuth.value = ''
-        DataInput.inputUsuarioAuth.value = ''
       }
     })
   }
@@ -41,14 +40,14 @@ export function FormLogin () {
               <label className='__Content-AuthSide-Form-Label' name='inputUsuarioAuth'>Usuario</label>
               <div className='__Content-AuthSide-Form-ContainerInput'>
                 <BiUser className='icon-Form' />
-                <input className='__Content-AuthSide-Form-Input' type='text' id='inputUsuarioAuth' />
+                <input className='__Content-AuthSide-Form-Input' type='text' id='inputUsuarioAuth' required />
               </div>
             </section>
             <section className='__Content-AuthSide-Form-Content'>
               <label className='__Content-AuthSide-Form-Label' name='btnPasswordAuth'>Contraseña</label>
               <div className='__Content-AuthSide-Form-ContainerInput'>
                 <TfiLock className='icon-Form' />
-                <input className='__Content-AuthSide-Form-Input' type='password' id='inputPasswordAuth' />
+                <input className='__Content-AuthSide-Form-Input' type='password' id='inputPasswordAuth' required />
               </div>
             </section>
             <button className='__Content-AuthSide-Form-Button'>Iniciar Sesion<MdArrowForwardIos className='arrowIcons' /></button>
