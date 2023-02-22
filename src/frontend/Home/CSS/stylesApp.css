@@ -9,4 +9,5 @@ html {
 body {
     background-color: var(--backgroundColorMain);
     margin: 0;
+    overflow-y: hidden;
 }

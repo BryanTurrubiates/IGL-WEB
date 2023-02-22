@@ -7,3 +7,9 @@
 .ant-tabs-nav-add {
   display: none;
 }
+
+.moduleLoaded {
+  width: 99.7%;
+  height: 85.7vh;
+  border: none;
+}

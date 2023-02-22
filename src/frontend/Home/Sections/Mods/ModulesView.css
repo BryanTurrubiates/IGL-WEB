@@ -20,6 +20,7 @@
 }
 
 .__MainModulesView-Title {
+  width: 1580px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -35,17 +36,26 @@
   font-size: 32px;
 }
 
-.__MainModulesView-ContainerModules {
+.__MainModulesView-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  overflow-y: hidden;
+}
+
+.__MainModulesView-Content {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 309px);
+  grid-template-rows: repeat(8, 70px);
   grid-column-gap: 15px;
-  grid-row-gap: 33px;
-  height: 73vh;
+  grid-row-gap: 15px;
+  height: 75vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-.__MainModulesView-ContainerModules::-webkit-scrollbar {
+.__MainModulesView-Content::-webkit-scrollbar {
   width: 0;
 }
 
