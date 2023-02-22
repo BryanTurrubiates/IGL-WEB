@@ -1,4 +1,4 @@
-import { TabsModules } from '../Tabs20/Tabs20'
+import { TabsModules } from './Tabs/Tabs'
 import './Sections.css'
 
 export function Modules () {

@@ -3,7 +3,7 @@ import { AuthContext } from '../Context/User/UserContext'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Navbar } from './NavBar/Nav'
 import { Modules } from './Sections/Sections'
-import { ModuleLoad } from '../Home/Sections/Views/ModuleLoad'
+import { ModulePreview } from '../Home/Sections/Views/ModulePreview'
 import { ModuleContext } from '../Context/ModulesSystem/moduleState'
 import { TabsContextProvider } from '../Context/TabsContext/TabsState'
 
@@ -20,7 +20,7 @@ export function HomePage () {
             <Navbar />
             <Routes>
               <Route path='/:topic' element=<Modules /> />
-              <Route path='/:topic/:module' element=<ModuleLoad /> />
+              <Route path='/:topic/:module' element=<ModulePreview /> />
             </Routes>
           </TabsContextProvider>
         </ModuleContext>

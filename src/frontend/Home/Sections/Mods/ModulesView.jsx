@@ -3,9 +3,10 @@ import { MdViewModule } from 'react-icons/md'
 import { CardModule } from './singleModule/cardModule'
 import { useContext } from 'react'
 import { ModulesSystem } from '../../../Context/ModulesSystem/modulesContext'
-import './Modules.css'
+import './ModulesView.css'
 
-export function ModulesView ({ topicToShow }) {
+export function ModulesView ({ topicToShow, objectFull }) {
+  console.log(objectFull)
   const { topic } = useParams()
   const [modulesIGL] = useContext(ModulesSystem)
   const ModulesToShow = modulesIGL.filter(module => module.idPadreI === topicToShow && module.idPadreI !== module.idModuloI)
@@ -18,7 +19,7 @@ export function ModulesView ({ topicToShow }) {
         </div>
         <div className='__MainModulesView-ContainerModules'>
           {
-            ModulesToShow.map(module => <CardModule key={module.idModuloI} nombreModulo={module.nombreV} pathModulo={module.urlV} />)
+            ModulesToShow.map(module => <CardModule key={module.idModuloI} nombreModulo={module.nombreV} pathModulo={module.urlV} moduleID={module.idModuloI} />)
           }
         </div>
       </div>

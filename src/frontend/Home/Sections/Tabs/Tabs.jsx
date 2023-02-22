@@ -1,32 +1,52 @@
-import './Tabs.css'
-import { useParams } from 'react-router-dom'
-import { TabTopic, TabModule } from './Atoms/TabAtom'
+import React, { useContext, useEffect } from 'react'
+import { Tabs } from 'antd'
+import { ModulesSystem } from '../../../Context/ModulesSystem/modulesContext'
 import { TabsContext } from '../../../Context/TabsContext/TabsContext'
-import { useContext, useEffect } from 'react'
-import { AuthContext } from '../../../Context/User/UserContext'
+import { useParams } from 'react-router-dom'
+import { ModulesView } from '../Mods/ModulesView'
+import '../Sections.css'
+import '../Mods/singleModule/cardModule.css'
 
-export function TabsView () {
-  const { topic, module } = useParams()
-  const [tabs] = useContext(TabsContext)
-  const [usuario, setUsuario] = useContext(AuthContext)
+export function TabsModules () {
+  const { topic } = useParams()
+  const [modulesIGL] = useContext(ModulesSystem)
+  const [tabs, setTabs, activeTab, setActiveTab] = useContext(TabsContext)
+  const currentTopic = modulesIGL.find(topicSearch => topicSearch.nombreV === topic)
+  const initialValues = [{ label: topic, children: <ModulesView topicToShow={currentTopic.idModuloI} objectFull={currentTopic} />, key: currentTopic.idModuloI, closable: false }]
 
   useEffect(() => {
-    if (module === undefined && topic !== usuario.lastTopic) {
-      const usuarioData = { ...usuario, lastTopic: topic }
-      setUsuario(usuarioData)
+    if (tabs.length === 0) {
+      setTabs(initialValues)
+      setActiveTab(currentTopic.idModuloI)
+    } else {
+      const tabsToUpdate = tabs
+      tabsToUpdate[0].label = topic
+      tabsToUpdate[0].children = <ModulesView topicToShow={currentTopic.idModuloI} objectFull={currentTopic} />
+      tabsToUpdate[0].key = currentTopic.idModuloI
+      setTabs(tabsToUpdate)
+      setActiveTab(tabsToUpdate[0].key)
     }
   }, [topic])
 
-  if (tabs != null) {
-    return (
-      <div className='__MainTabs-Container'>
-        <div className='__MainTabs-Content'>
-          <TabTopic TabName={!usuario.lastTopic ? 'Inicio' : usuario.lastTopic} />
-          {
-            tabs.map((tabModulo) => <TabModule key={tabModulo.nombreTab} TabName={tabModulo.nombreTab} />)
-          }
-        </div>
-      </div>
-    )
+  const onChange = (newActiveKey) => {
+    setActiveTab(newActiveKey)
   }
+
+  const remove = (targetKey) => {
+    const currentItem = tabs.findIndex(itemTab => itemTab.key === targetKey)
+    const lastModule = tabs[currentItem - 1]
+    const newtabsUpdated = tabs.filter((item) => item.key !== targetKey)
+    setTabs(newtabsUpdated)
+    setActiveTab(lastModule.key)
+  }
+
+  const onEdit = (targetKey, action) => {
+    if (action === 'remove') {
+      remove(targetKey)
+    }
+  }
+
+  return (
+    <Tabs type='editable-card' onEdit={onEdit} onChange={onChange} activeKey={activeTab} items={tabs} />
+  )
 }

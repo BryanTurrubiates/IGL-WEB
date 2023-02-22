@@ -1,19 +1,23 @@
 import { MdKeyboardArrowUp } from 'react-icons/md'
-import { useParams } from 'react-router-dom'
 import { TabsContext } from '../../../../Context/TabsContext/TabsContext'
 import { useContext } from 'react'
+import { ModulePreview } from '../../Views/ModulePreview'
 import './cardModule.css'
 
-export function CardModule ({ nombreModulo, pathModulo }) {
-  const [tabs, setTabs] = useContext(TabsContext)
-  const { topic } = useParams()
-  const pathMODE = import.meta.env.VITE_URL
-
-  const handleClickModule = (event) => {
-    if (!tabs) { setTabs({ nombreTab: nombreModulo, path: `${pathMODE}/IGL-WEB/home/${topic}/${nombreModulo}`, urlModulo: pathModulo }) }
-    const exists = tabs.find(element => element.nombreTab === nombreModulo)
+export function CardModule ({ nombreModulo, pathModulo, moduleID }) {
+  const [tabs, setTabs, activeTab, setActiveTab] = useContext(TabsContext)
+  const pathModule = `http://192.168.80.220:8080${pathModulo}`
+  const handleClickModule = () => {
+    if (!tabs) {
+      setTabs({ label: nombreModulo, children: <ModulePreview URLModule={pathModule} />, key: moduleID })
+      setActiveTab(moduleID)
+    }
+    const exists = tabs.find(element => element.label === nombreModulo)
     if (exists === undefined) {
-      setTabs([...tabs, { nombreTab: nombreModulo, path: `${pathMODE}/IGL-WEB/home/${topic}/${nombreModulo}`, urlModulo: pathModulo, pagePreview: '', active: true }])
+      setTabs([...tabs, { label: nombreModulo, children: <ModulePreview URLModule={pathModule} />, key: moduleID }])
+      setActiveTab(moduleID)
+    } else {
+      setActiveTab(moduleID)
     }
   }
   return (
