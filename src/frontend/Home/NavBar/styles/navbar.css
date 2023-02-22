@@ -4,6 +4,7 @@
     --colorButtonsExit: #FA4141;
     --colorTopicText : #3361FF;
     --colorModuleText : #727272;
+    --SecundaryColor: #7AC042;
 }
 
 .__Navbar-Container {
@@ -71,7 +72,8 @@
 
 .sidebar-active {
     width: 380px;
-    height: 100vh;
+    height: 97vh;
+    overflow-y: scroll;
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -81,6 +83,20 @@
     left: 0;
     border-right: #ECECEC 1px solid;
     transition: 350ms;
+    z-index: 2;
+}
+
+.sidebar-active::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-active::-webkit-scrollbar-track {
+    background: #ECECEC;
+}
+
+.sidebar-active::-webkit-scrollbar-thumb {
+    background-color: var(--borderColors);
+    border-radius: 20px;
 }
 
 .__sideBar-items {
@@ -118,13 +134,103 @@
     background-color: #FFFFFF;
     color: var(--colorModuleText);
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 20px;
     gap: 10px;
 }
 
+.__Module-textSubFolder {
+    width: 300px;
+    display: flex;
+    align-items: center ;
+    border-bottom: var(--colorModuleText) 2px solid;
+    border-top: var(--borderColors) 1px solid;
+    border-left: var(--borderColors) 1px solid;
+    border-right: var(--borderColors) 1px solid;
+    background-color: #FFFFFF;
+    color: var(--colorModuleText);
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 10px;
+    padding-left: 20px;
+    gap: 10px;
+}
+
+.__Module-textSubFolder:hover {
+    color: var(--SecundaryColor);
+}
+
+.linksRoutersSubFolder {
+    color: var(--colorModuleText);
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.linksRoutersSubFolder:hover {
+    color: var(--SecundaryColor);
+}
+
 .__Module-text:hover {
     color: var(--colorTopicText);
     cursor: pointer;
+}
+
+.__icon-sidebar {
+    font-size: 25px;
+}
+
+.__module-Content{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.linksRouters {
+    text-decoration: none;
+    color: var(--colorModuleText);
+}
+.linksRouters:hover {
+    color: var(--colorTopicText);
+}
+
+@media (max-width: 1600px) {
+
+    .__Navbar-Content {
+        width: 1300px;
+    }
+
+    .logoIGL {
+        width: 120px;
+    }
+
+    .linksRouters {
+        font-size: 18px;
+    }
+
+    .btnExitSession {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+    }
+
+    .__sidebar-toggle-icon {
+        font-size: 25px;
+    } 
+
+    .__Module-text {
+        padding: 15px;
+    }
+
+    .__Module-textSubFolder {
+        width: 310px;
+        padding: 5px;
+        padding-left: 15px;
+    }
+
+    .linksRoutersSubFolder {
+        font-size: 15px;
+    }
+
 }

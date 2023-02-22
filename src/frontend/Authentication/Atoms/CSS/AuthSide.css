@@ -167,3 +167,40 @@
 .__Content-AuthSide-Form-Button-redirect:hover {
   background-color: var(--hoverColorButtonsGreen);
 }
+
+@media (max-width: 1600px) {
+
+  .__Content-AuthSide-Logo-img {
+    width: 190px;
+  }
+
+  .__Content-AuthSide-Form-Label {
+    font-size: 18px;
+  }
+
+  .__Content-AuthSide-Form-Input {
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .__Content-AuthSide-Form-Button {
+    font-size: 17px;
+  }
+
+  .__Content-AuthSide-Form-Button-redirect {
+    font-size: 17px;
+  }
+
+  .arrowIcons {
+    right: 15px;
+  }
+
+  .sectionText {
+    font-size: 10px;
+  }
+
+  .sectionText::before {
+    width: 115px;
+  }
+
+}

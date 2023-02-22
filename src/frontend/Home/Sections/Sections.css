@@ -1,0 +1,15 @@
+.__MainBody-Container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ant-tabs-nav-add {
+  display: none;
+}
+
+.moduleLoaded {
+  width: 99.7%;
+  height: 85.7vh;
+  border: none;
+}
