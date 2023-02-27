@@ -1,0 +1,10 @@
+.Nav_Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.IGL_Logo {
+  width: 160px;
+}
