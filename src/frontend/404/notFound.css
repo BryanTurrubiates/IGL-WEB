@@ -1,0 +1,76 @@
+:root {
+  --primaryColor: #7AC042;
+  --secundaryColor: #00ADEF;
+  --ascentColor: #0084F0;
+}
+
+.NotFound_Container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NotFound_Content {
+  width: 1366px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NumberCode {
+  width: 50%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number404 {
+  font-size: 320px;
+  position: absolute;
+}
+
+#numberFront {
+  color: var(--primaryColor);
+  position: relative;
+  right: 20px;
+  top: 12px;
+}
+
+#numberBack {
+  color: var(--ascentColor);
+  position: absolute;
+}
+
+.mensaje_Container {
+  width: 50%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+}
+
+.oppsTitulo {
+  font-size: 96px;
+  color: var(--primaryColor);
+}
+
+.descriptionTitulo {
+  font-size: 32px;
+  color: var(--secundaryColor);
+}
+
+.btnGoToIGL {
+  width: 370px;
+  height: 80px;
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  background-color: var(--primaryColor);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}

@@ -13,9 +13,10 @@ import { Link } from 'react-router-dom'
 
 export function Navbar () {
   const [usuario] = useContext(AuthContext)
-  const [, setModulesIGL] = useContext(ModulesSystem)
+  const [modulesIGL, setModulesIGL] = useContext(ModulesSystem)
   const [SideBar, setSideBar] = useState(false)
   const [modules, setModules] = useState([{ idModuloI: 0, nombreV: 'Inicial' }])
+  console.log(modulesIGL)
 
   useEffect(() => {
     const modulesFetching = GetTopicsModules(usuario.idUsuarioR)
@@ -25,7 +26,7 @@ export function Navbar () {
     })
   }, [])
 
-  const showSidebar = () => {
+  const showSidebar = (event) => {
     setSideBar(!SideBar)
   }
 
@@ -57,7 +58,7 @@ export function Navbar () {
                 <li key={module.idModuloI} className={module.idPadreSubCarpetaI === null ? '__Module-text' : '__Module-textSubFolder'} onClick={showSidebar}>
                   <div className='__module-Content'>
                     <MdViewModule className='__icon-sidebar' />
-                    <Link to={module.nombreV} className={module.idPadreSubCarpetaI === null ? 'linksRouters' : 'linksRoutersSubFolder'}>{module.nombreV.toUpperCase()}</Link>
+                    <Link to={`/proyecto/public_html/IGL-WEB/home/${module.nombreV}`} className={module.idPadreSubCarpetaI === null ? 'linksRouters' : 'linksRoutersSubFolder'}>{module.nombreV.toUpperCase()}</Link>
                   </div>
                 </li>
               )
