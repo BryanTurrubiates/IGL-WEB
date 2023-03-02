@@ -8,7 +8,7 @@
 
 .__CardModulo-Container {
   width: 295px;
-  height: 57px;
+  height: 45px;
   display: flex;
   align-items: center;
   background-color: white;
@@ -36,8 +36,8 @@
 }
 
 .__CardModulo-Icon {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,13 +50,13 @@
 .titleModule {
   display: flex;
   flex-direction: column;
-  font-size: 17px;
+  font-size: 15px;
   padding: 5px;
   line-height: 1.2;
 }
 
 .subtitleInfo {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
 }
 
