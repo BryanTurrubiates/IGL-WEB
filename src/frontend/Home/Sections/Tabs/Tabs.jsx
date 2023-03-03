@@ -10,7 +10,7 @@ import '../Sections.css'
 import '../Mods/singleModule/cardModule.css'
 
 export function TabsModules () {
-  const initialValues = [{ label: 'Inicio', children: <Dashboard />, key: 'InicioUser', closable: false }]
+  const initialValues = [{ label: 'Inicio', children: <Dashboard />, key: 0, closable: false }]
   const { topic } = useParams()
   const pathMODE = import.meta.env.VITE_URL
   const [usuario] = useContext(AuthContext)
@@ -20,7 +20,7 @@ export function TabsModules () {
   useEffect(() => {
     if (tabs.length === 0) {
       setTabs(initialValues)
-      setActiveTab('InicioUser')
+      setActiveTab(0)
     } else {
       const currentTopic = modulesIGL.find(topicToSearch => topicToSearch.nombreV === topic)
       const existInTabs = tabs.find(tabToSearch => tabToSearch.key === currentTopic.idModuloI)

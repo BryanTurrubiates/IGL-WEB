@@ -3,15 +3,12 @@ import { AutoComplete } from 'antd'
 import { useContext } from 'react'
 import { ModulesSystem } from '../../../Context/ModulesSystem/modulesContext'
 import { TabsContext } from '../../../Context/TabsContext/TabsContext'
-import { ModulesView } from '../../Sections/Mods/ModulesView'
-import { useNavigate } from 'react-router-dom'
+import { ModulePreview } from '../../Sections/Views/ModulePreview'
 
 export function SearchBar () {
   const [modulesIGL] = useContext(ModulesSystem)
-  const [tabs, setTabs] = useContext(TabsContext)
-  const [, setActiveTab] = useContext(TabsContext)
-  const pathMODE = import.meta.env.VITE_URL
-  const navigate = useNavigate()
+  const [tabs, setTabs,, setActiveTab] = useContext(TabsContext)
+
   let newTab
   const modulesToShow = []
   if (modulesIGL !== undefined) {
@@ -24,19 +21,15 @@ export function SearchBar () {
   }
   const onSelect = (value) => {
     const moduleToAdd = modulesIGL.find(module => module.nombreV === value)
-    const topicToAdd = modulesIGL.find(topic => topic.idModuloI === moduleToAdd.idPadreI)
-    console.log(topicToAdd.nombreV)
-    if (tabs.length === 0) {
-      const topicToAddData = [{ label: topicToAdd.nombreV, children: <ModulesView topicToShow={topicToAdd.idModuloI} objectFull={topicToAdd} />, key: topicToAdd.idModuloI }]
-      newTab = [{ label: moduleToAdd.nombreV, children: <ModulesView topicToShow={moduleToAdd.idModuloI} objectFull={moduleToAdd} />, key: moduleToAdd.idModuloI }]
-      const newTabsToShow = [...topicToAddData, ...newTab]
-      console.log(newTabsToShow)
+    const existInTab = tabs.find(tabToSearch => tabToSearch.key === moduleToAdd.idModuloI)
+    if (existInTab === undefined) {
+      newTab = [{ label: moduleToAdd.nombreV, children: <ModulePreview URLModule={moduleToAdd.urlV} />, key: moduleToAdd.idModuloI }]
+      const prevTabs = tabs
+      const newTabsToShow = [...prevTabs, ...newTab]
       setTabs(newTabsToShow)
       setActiveTab(moduleToAdd.idModuloI)
-      navigate(`${pathMODE}/IGL-WEB/home/${topicToAdd.nombreV}`)
     } else {
-      newTab = [{ label: moduleToAdd.nombreV, children: <ModulesView topicToShow={moduleToAdd.idModuloI} objectFull={moduleToAdd} />, key: moduleToAdd.idModuloI }]
-      console.log(tabs)
+      setActiveTab(moduleToAdd.idModuloI)
     }
   }
   return (

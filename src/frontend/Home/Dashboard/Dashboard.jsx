@@ -1,6 +1,5 @@
 import './Dashboard.css'
 import { AiOutlineStar } from 'react-icons/ai'
-import { MdKeyboardArrowDown } from 'react-icons/md'
 import { BsArrowRepeat } from 'react-icons/bs'
 import { CardModule } from '../Sections/Mods/singleModule/cardModule'
 import { RiCodeView } from 'react-icons/ri'
@@ -10,9 +9,6 @@ import { Switch } from 'antd'
 export function Dashboard () {
   const onChange = (checked) => {
     console.log(`switch to ${checked}`)
-  }
-  const handleClick = (event) => {
-    console.log(event.target)
   }
   return (
     <div className='dashboard-Container'>
