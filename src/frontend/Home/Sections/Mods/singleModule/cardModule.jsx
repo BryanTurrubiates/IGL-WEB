@@ -5,7 +5,7 @@ import { ModulePreview } from '../../Views/ModulePreview'
 import './cardModule.css'
 
 export function CardModule ({ nombreModulo, pathModulo, moduleID }) {
-  const [tabs, setTabs, activeTab, setActiveTab] = useContext(TabsContext)
+  const [tabs, setTabs,, setActiveTab] = useContext(TabsContext)
   const pathModule = `http://192.168.80.220:8080${pathModulo}`
   const handleClickModule = () => {
     if (!tabs) {

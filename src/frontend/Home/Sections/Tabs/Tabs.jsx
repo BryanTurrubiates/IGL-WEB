@@ -5,29 +5,32 @@ import { TabsContext } from '../../../Context/TabsContext/TabsContext'
 import { AuthContext } from '../../../Context/User/UserContext'
 import { Navigate, useParams } from 'react-router-dom'
 import { ModulesView } from '../Mods/ModulesView'
+import { Dashboard } from '../../Dashboard/Dashboard'
 import '../Sections.css'
 import '../Mods/singleModule/cardModule.css'
 
 export function TabsModules () {
+  const initialValues = [{ label: 'Inicio', children: <Dashboard />, key: 0, closable: false }]
   const { topic } = useParams()
-  const [usuario] = useContext(AuthContext)
-  const [modulesIGL] = useContext(ModulesSystem)
-  const [tabs, setTabs, activeTab, setActiveTab] = useContext(TabsContext)
-  const currentTopic = modulesIGL.find(topicSearch => topicSearch.nombreV === topic)
-  const initialValues = [{ label: topic, children: <ModulesView topicToShow={currentTopic.idModuloI} objectFull={currentTopic} />, key: currentTopic.idModuloI, closable: false }]
   const pathMODE = import.meta.env.VITE_URL
+  const [usuario] = useContext(AuthContext)
+  const [tabs, setTabs, activeTab, setActiveTab] = useContext(TabsContext)
+  const [modulesIGL] = useContext(ModulesSystem)
 
   useEffect(() => {
     if (tabs.length === 0) {
       setTabs(initialValues)
-      setActiveTab(currentTopic.idModuloI)
+      setActiveTab(0)
     } else {
-      const tabsToUpdate = tabs
-      tabsToUpdate[0].label = topic
-      tabsToUpdate[0].children = <ModulesView topicToShow={currentTopic.idModuloI} objectFull={currentTopic} />
-      tabsToUpdate[0].key = currentTopic.idModuloI
-      setTabs(tabsToUpdate)
-      setActiveTab(tabsToUpdate[0].key)
+      const currentTopic = modulesIGL.find(topicToSearch => topicToSearch.nombreV === topic)
+      const existInTabs = tabs.find(tabToSearch => tabToSearch.key === currentTopic.idModuloI)
+      if (existInTabs === undefined) {
+        const topicToAdd = [{ label: currentTopic.nombreV, children: <ModulesView topicToShow={currentTopic.idModuloI} objectFull={currentTopic} />, key: currentTopic.idModuloI }]
+        setTabs([...tabs, ...topicToAdd])
+        setActiveTab(currentTopic.idModuloI)
+      } else {
+        setActiveTab(currentTopic.idModuloI)
+      }
     }
   }, [topic])
 

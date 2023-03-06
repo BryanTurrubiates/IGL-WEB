@@ -4,62 +4,19 @@
     --colorButtonsExit: #FA4141;
 }
 
-.searchBox {
-    width: 60px;
-    height: 50px;
+.searchBar {
+    width: 210px;
+}
+
+.ant-select-show-search:where(.css-dev-only-do-not-override-diro6f).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    height: 45px;
     display: flex;
     align-items: center;
+    border-radius: 20px;
 }
 
-.searchBar-input {
-    width: 100%;
-    height: 100%;
+.ant-select-show-search:where(.css-dev-only-do-not-override-diro6f).ant-select:not(.ant-select-customize-input) .ant-select-selector input {
+    height: 45px;
     display: flex;
     align-items: center;
-    position: relative;
-    border: none;
-    background:#FFFFFF;
-    font-size: 18px;
-    border-radius: 50px;
-    box-shadow: 4px 2px 13px rgba(0, 0, 0, 0.05);
-    padding: 0 60px 0 20px;
-    transition: all 1s;
-}
-
-.searchIcon {
-    display: flex;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    right: 40px;
-    color: var(--borderColors);
-}
-
-.iconSearch {
-    font-size: 28px;
-}
-
-.searchBar-input:hover {
-    width: 170px;
-}
-
-@media (max-width: 1600px) {
-
-    .searchBar-input {
-        height: 42px;
-    }
-
-    .searchIcon {
-        right: 35px;
-    }
-
-    .iconSearch {
-        font-size: 26px;
-    }
-
-    #__MenuHamburguesa-Icon {
-        width: 35px;
-        height: 40px;
-    }
 }
