@@ -13,10 +13,9 @@ import { Link } from 'react-router-dom'
 
 export function Navbar () {
   const [usuario] = useContext(AuthContext)
-  const [modulesIGL, setModulesIGL] = useContext(ModulesSystem)
+  const [, setModulesIGL] = useContext(ModulesSystem)
   const [SideBar, setSideBar] = useState(false)
   const [modules, setModules] = useState([{ idModuloI: 0, nombreV: 'Inicial' }])
-  console.log(modulesIGL)
 
   useEffect(() => {
     const modulesFetching = GetTopicsModules(usuario.idUsuarioR)

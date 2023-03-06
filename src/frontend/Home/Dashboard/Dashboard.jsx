@@ -5,11 +5,48 @@ import { CardModule } from '../Sections/Mods/singleModule/cardModule'
 import { RiCodeView } from 'react-icons/ri'
 import { goTickets } from '../../Services/redirects'
 import { Switch } from 'antd'
+import { useState, useContext, useEffect } from 'react'
+import { GetFavorites, GetRecent } from '../../Services/GetModules'
+import { AuthContext } from '../../Context/User/UserContext'
+import { ModulesSystem } from '../../Context/ModulesSystem/modulesContext'
 
 export function Dashboard () {
+  const [usuario] = useContext(AuthContext)
+  const [IGLmodules] = useContext(ModulesSystem)
+  const [modulesFav, setModulesFav] = useState(false)
+  const [modulosRecientes, setModulosRecientes] = useState([])
+  const [modulesToShowRecent, setModulesToShowRecent] = useState([])
+  const { idUsuarioR } = usuario
+
+  let modulesFavToShow = modulesFav
+  let modulesRecentToShow = []
+  if (!modulesFavToShow) {
+    modulesFavToShow = [{ label: 'Hola' }]
+  }
+
+  useEffect(() => {
+    GetFavorites(idUsuarioR)
+      .then(module => setModulesFav(module))
+    GetRecent(idUsuarioR)
+      .then(module => setModulosRecientes(module))
+  }, [])
+
+  useEffect(() => {
+    if (modulosRecientes.length !== 0) {
+      const modulo1 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo1)]
+      const modulo2 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo2)]
+      const modulo3 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo3)]
+      const modulo4 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo4)]
+      const modulo5 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo5)]
+      modulesRecentToShow = [...modulo1, ...modulo2, ...modulo3, ...modulo4, ...modulo5]
+      setModulesToShowRecent(modulesRecentToShow)
+    }
+  }, [modulosRecientes])
+
   const onChange = (checked) => {
     console.log(`switch to ${checked}`)
   }
+
   return (
     <div className='dashboard-Container'>
       <div className='dashboard-Content'>
@@ -46,12 +83,9 @@ export function Dashboard () {
                   </div>
                 </div>
                 <div className='gridModules-fav'>
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
+                  {
+                    modulesFavToShow.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModulo} pathModulo={module.urlV} key={`moduleToShow${module.nombreV}`} />)
+                  }
                 </div>
               </div>
             </div>
@@ -64,10 +98,9 @@ export function Dashboard () {
                   </div>
                 </div>
                 <div className='gridModules-recent'>
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
-                  <CardModule />
+                  {
+                    modulesToShowRecent.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModulo} pathModulo={module.urlV} key={`moduleRecent${module.nombreV}`} />)
+                  }
                 </div>
               </div>
             </div>
