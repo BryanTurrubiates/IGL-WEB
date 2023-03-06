@@ -55,10 +55,10 @@ export function Navbar () {
             TopicsSidebar.map(module => {
               return (
                 <li key={module.idModuloI} className={module.idPadreSubCarpetaI === null ? '__Module-text' : '__Module-textSubFolder'} onClick={showSidebar}>
-                  <div className='__module-Content'>
+                  <Link to={`/proyecto/public_html/IGL-WEB/home/${module.nombreV}`} className='__module-Content'>
                     <MdViewModule className='__icon-sidebar' />
-                    <Link to={`/proyecto/public_html/IGL-WEB/home/${module.nombreV}`} className={module.idPadreSubCarpetaI === null ? 'linksRouters' : 'linksRoutersSubFolder'}>{module.nombreV.toUpperCase()}</Link>
-                  </div>
+                    <p className={module.idPadreSubCarpetaI === null ? 'linksRouters' : 'linksRoutersSubFolder'}>{module.nombreV.toUpperCase()}</p>
+                  </Link>
                 </li>
               )
             })
