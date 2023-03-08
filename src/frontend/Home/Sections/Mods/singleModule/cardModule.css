@@ -102,5 +102,6 @@
 
   .titleModule {
     font-size: 14px;
+    max-width: 20ch;
   }
 }

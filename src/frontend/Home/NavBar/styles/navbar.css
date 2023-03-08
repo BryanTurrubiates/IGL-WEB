@@ -223,13 +223,14 @@
     } 
 
     .__Module-text {
-        padding: 15px;
+        width: 100%;
+        padding: 2px;
     }
 
     .__Module-textSubFolder {
-        width: 310px;
+        width: 325px;
         padding: 5px;
-        padding-left: 15px;
+        padding-left: 2px;
     }
 
     .linksRoutersSubFolder {
