@@ -19,3 +19,9 @@ export function logOutUser () {
     })
   })
 }
+
+export async function GetInfoUser (idUsuario) {
+  const response = await fetch(`http://192.168.80.220:8080/proyecto/public_html/BackendSistemaWeb/API.php?GetInfoUser=true&usuario=${idUsuario}`)
+  const ResponseDB = await response.json()
+  return ResponseDB
+}

@@ -26,7 +26,7 @@
 }
 
 .user-Content {
-  height: 90%;
+  height: 95%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -41,6 +41,7 @@
 
 .topSection {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 15px;
 }
