@@ -1,18 +1,20 @@
+import { useContext } from 'react'
 import { MdKeyboardArrowUp } from 'react-icons/md'
 import { TabsContext } from '../../../../Context/TabsContext/TabsContext'
-import { useContext } from 'react'
+import { ModulesSystem } from '../../../../Context/ModulesSystem/modulesContext'
 import { ModulePreview } from '../../Views/ModulePreview'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { GetFavorites } from '../../../../Services/GetModules'
 import { AuthContext } from '../../../../Context/User/UserContext'
+import { addFavoriteModule, addRecentModule } from '../../../../Services/addModule'
 import './cardModule.css'
 
 export function CardModule ({ nombreModulo, pathModulo, moduleID, favorite }) {
   const [usuario] = useContext(AuthContext)
+  const [,, modulesFavorite, setModulesFavorites] = useContext(ModulesSystem)
   const [tabs, setTabs,, setActiveTab] = useContext(TabsContext)
   const { idUsuarioR } = usuario
   const pathModule = `http://192.168.80.220:8080${pathModulo}`
-  let moduleFavorite = false
 
   const handleClickModule = () => {
     if (!tabs) {
@@ -23,6 +25,14 @@ export function CardModule ({ nombreModulo, pathModulo, moduleID, favorite }) {
     if (exists === undefined) {
       setTabs([...tabs, { label: nombreModulo, children: <ModulePreview URLModule={pathModule} />, key: moduleID }])
       setActiveTab(moduleID)
+      GetFavorites(idUsuarioR)
+        .then(favoritesModulesIGL => {
+          const existInFavorites = favoritesModulesIGL.some(favoritesModulesIGL => favoritesModulesIGL.idModulo === moduleID)
+          if (existInFavorites === false) {
+            addRecentModule(idUsuarioR, moduleID)
+            setModulesFavorites(!modulesFavorite)
+          }
+        })
     } else {
       setActiveTab(moduleID)
     }
@@ -33,11 +43,11 @@ export function CardModule ({ nombreModulo, pathModulo, moduleID, favorite }) {
       .then(response => {
         const favorite = response.find(moduleToSearch => moduleToSearch.nombreV === nombreModulo)
         if (favorite !== undefined) {
-          moduleFavorite = true
-          console.log(moduleFavorite)
+          setModulesFavorites(!modulesFavorite)
+          addFavoriteModule(idUsuarioR, moduleID, nombreModulo, pathModule, 'DELETE')
         } else {
-          moduleFavorite = false
-          console.log(moduleFavorite)
+          setModulesFavorites(!modulesFavorite)
+          addFavoriteModule(idUsuarioR, moduleID, nombreModulo, pathModule, 'ADD')
         }
       })
   }

@@ -13,7 +13,7 @@ import { ModulesSystem } from '../../Context/ModulesSystem/modulesContext'
 
 export function Dashboard () {
   const [usuario] = useContext(AuthContext)
-  const [IGLmodules] = useContext(ModulesSystem)
+  const [IGLmodules,, modulesFavorites] = useContext(ModulesSystem)
   const [usuarioIGL, setUsuarioIGL] = useState([{ idUsuario: 1, NombreV: 'Sistemas', ApPatV: 'DEV', OficinaV: 'NLD', DescripV: 'SISTEMAS' }])
   const [modulesFav, setModulesFav] = useState(false)
   const [modulosRecientes, setModulosRecientes] = useState([])
@@ -27,6 +27,7 @@ export function Dashboard () {
   }
 
   useEffect(() => {
+    console.log(modulesFavorites)
     GetFavorites(idUsuarioR)
       .then(module => setModulesFav(module))
     GetRecent(idUsuarioR)
@@ -35,7 +36,7 @@ export function Dashboard () {
       GetInfoUser(idUsuarioR)
         .then(userData => setUsuarioIGL(userData))
     }
-  }, [])
+  }, [modulesFavorites])
 
   useEffect(() => {
     if (modulosRecientes.length !== 0) {
@@ -43,8 +44,7 @@ export function Dashboard () {
       const modulo2 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo2)]
       const modulo3 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo3)]
       const modulo4 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo4)]
-      const modulo5 = [IGLmodules.find(moduleSearch => moduleSearch.idModuloI === modulosRecientes[0].idModulo5)]
-      modulesRecentToShow = [...modulo1, ...modulo2, ...modulo3, ...modulo4, ...modulo5]
+      modulesRecentToShow = [...modulo1, ...modulo2, ...modulo3, ...modulo4]
       setModulesToShowRecent(modulesRecentToShow)
     }
   }, [modulosRecientes])
@@ -52,7 +52,6 @@ export function Dashboard () {
   const onChange = (checked) => {
     console.log(`switch to ${checked}`)
   }
-
   return (
     <div className='dashboard-Container'>
       <div className='dashboard-Content'>
@@ -93,7 +92,7 @@ export function Dashboard () {
                 </div>
                 <div className='gridModules-fav'>
                   {
-                    modulesFavToShow.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModulo} pathModulo={module.urlV} key={`moduleToShow${module.nombreV}`} />)
+                    modulesFavToShow.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModulo} pathModulo={module.urlV} key={`moduleToShow${module.nombreV}`} favorite />)
                   }
                 </div>
               </div>
@@ -108,7 +107,7 @@ export function Dashboard () {
                 </div>
                 <div className='gridModules-recent'>
                   {
-                    modulesToShowRecent.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModulo} pathModulo={module.urlV} key={`moduleRecent${module.nombreV}`} />)
+                    modulesToShowRecent.map(module => <CardModule nombreModulo={module.nombreV} moduleID={module.idModuloI} pathModulo={module.urlV} key={`moduleRecent${module.nombreV}`} />)
                   }
                 </div>
               </div>
