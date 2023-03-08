@@ -7,12 +7,14 @@ import { goTickets } from '../../Services/redirects'
 import { Switch } from 'antd'
 import { useState, useContext, useEffect } from 'react'
 import { GetFavorites, GetRecent } from '../../Services/GetModules'
+import { GetInfoUser } from '../../Services/AuthUser'
 import { AuthContext } from '../../Context/User/UserContext'
 import { ModulesSystem } from '../../Context/ModulesSystem/modulesContext'
 
 export function Dashboard () {
   const [usuario] = useContext(AuthContext)
   const [IGLmodules] = useContext(ModulesSystem)
+  const [usuarioIGL, setUsuarioIGL] = useState([{ idUsuario: 1, NombreV: 'Sistemas', ApPatV: 'DEV', OficinaV: 'NLD', DescripV: 'SISTEMAS' }])
   const [modulesFav, setModulesFav] = useState(false)
   const [modulosRecientes, setModulosRecientes] = useState([])
   const [modulesToShowRecent, setModulesToShowRecent] = useState([])
@@ -29,6 +31,10 @@ export function Dashboard () {
       .then(module => setModulesFav(module))
     GetRecent(idUsuarioR)
       .then(module => setModulosRecientes(module))
+    if (idUsuarioR !== 1) {
+      GetInfoUser(idUsuarioR)
+        .then(userData => setUsuarioIGL(userData))
+    }
   }, [])
 
   useEffect(() => {
@@ -53,17 +59,20 @@ export function Dashboard () {
         <div className='user-Container'>
           <div className='user-Content'>
             <div className='topSection'>
+              <div className='departamento-Container'>
+                <p className='departamento-title'>{`${usuarioIGL[0].OficinaV}`}</p>
+              </div>
               <div className='avatar-Container'>
                 <div className='user-Circle' />
                 <img src='https://miro.medium.com/fit/c/176/176/2*-cdwKPXyVI0ejgxpWkKBeA.jpeg' className='imgAvatar' />
               </div>
               <div className='infoUser-Container'>
                 <p className='bienvenida-title'>Bienvenido,</p>
-                <p className='nameUser-title'>Bryan Turrubiates</p>
+                <p className='nameUser-title'>{`${usuarioIGL[0].NombreV} ${usuarioIGL[0].ApPatV}`}</p>
               </div>
               <div className='departamento-Container'>
                 <RiCodeView className='iconDepartamento' />
-                <p className='departamento-title'>SISTEMAS</p>
+                <p className='departamento-title'>{usuarioIGL[0].DescripV}</p>
               </div>
             </div>
             <div className='bottomSection'>
