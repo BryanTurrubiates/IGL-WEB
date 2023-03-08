@@ -7,16 +7,16 @@ import { GetFavorites } from '../../../Services/GetModules'
 import './ModulesView.css'
 
 export function ModulesView ({ topicToShow, objectFull }) {
-  const [modulesIGL] = useContext(ModulesSystem)
+  const [modulesIGL,, modulesFavorites] = useContext(ModulesSystem)
   const [usuario] = useContext(AuthContext)
-  const [modulesFavorites, setModulesFavorites] = useState([{ nombreV: 'Hola' }])
+  const [modulesFavoritesL, setModulesFavorites] = useState([{ nombreV: 'Hola' }])
   const ModulesToShow = modulesIGL.filter(module => module.idPadreI === topicToShow && module.idPadreI !== module.idModuloI)
   const { idUsuarioR } = usuario
 
   useEffect(() => {
     GetFavorites(idUsuarioR)
       .then(response => setModulesFavorites(response))
-  }, [])
+  }, [modulesFavorites])
   return (
     <div className='__MainModulesView-Container'>
       <div className='__MainModulesView-Title'>
@@ -27,7 +27,7 @@ export function ModulesView ({ topicToShow, objectFull }) {
         <div className='__MainModulesView-ContainerModules'>
           <div className='__MainModulesView-Content'>
             {
-              ModulesToShow.map(module => <CardModule key={module.idModuloI} nombreModulo={module.nombreV} pathModulo={module.urlV} moduleID={module.idModuloI} favorite={modulesFavorites.some(moduleSearching => moduleSearching.nombreV === module.nombreV)} />)
+              ModulesToShow.map(module => <CardModule key={module.idModuloI} nombreModulo={module.nombreV} pathModulo={module.urlV} moduleID={module.idModuloI} favorite={modulesFavoritesL.some(moduleSearching => moduleSearching.nombreV === module.nombreV)} />)
             }
           </div>
         </div>
