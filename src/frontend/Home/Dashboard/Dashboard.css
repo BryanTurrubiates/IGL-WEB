@@ -208,3 +208,19 @@
   font-size: 22px;
   cursor: pointer;
 }
+
+@media (max-width: 1600px) {
+  .dashboard-Content {
+    justify-content: center;
+  }
+  .dashboardModules-Container {
+    width: 70%;
+  }
+  .__CardModulo-Container {
+    width: 250px;
+    font-size: 14px;
+  }
+  .titleModule {
+    font-size: 12px;
+  }
+}

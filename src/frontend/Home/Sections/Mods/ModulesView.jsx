@@ -23,7 +23,7 @@ export function ModulesView ({ topicToShow, objectFull }) {
         <MdViewModule className='iconTitle' />
         <h3>{objectFull.nombreV.toUpperCase()}</h3>
       </div>
-      <div className='__MainModulesView-Content'>
+      <div className='__MainModulesView'>
         <div className='__MainModulesView-ContainerModules'>
           <div className='__MainModulesView-Content'>
             {

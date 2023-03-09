@@ -61,8 +61,31 @@
 
 @media (max-width:1600px) {
 
+  .__MainModulesView-ContainerModules {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .__MainModulesView-Title {
+    width: 1360px;
+  }
+
+  .__MainModulesView-ContainerModules {
+    width: 1400px;
+    height: 500px;
+  }
+
   .__MainModulesView-Content {
-    width: 1300px;
+    width: 1600px;
+    grid-template-columns: repeat(5,250px);
+    grid-template-rows: repeat(8, 46px);
+    grid-column-gap: 30px;
+    justify-content: center;
+  }
+
+  .icon-toAddFav {
+    right: 40px;
   }
 
 }
