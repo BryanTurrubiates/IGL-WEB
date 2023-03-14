@@ -2,11 +2,10 @@ import './Dashboard.css'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BsArrowRepeat } from 'react-icons/bs'
 import { CardModule } from '../Sections/Mods/singleModule/cardModule'
-import { RiCodeView } from 'react-icons/ri'
 import { goTickets } from '../../Services/redirects'
 import { Switch } from 'antd'
 import { useState, useContext, useEffect } from 'react'
-import { GetFavorites, GetRecent } from '../../Services/GetModules'
+import { GetFavorites, GetRecent, GetRoutesModules } from '../../Services/GetModules'
 import { GetInfoUser } from '../../Services/AuthUser'
 import { AuthContext } from '../../Context/User/UserContext'
 import { ModulesSystem } from '../../Context/ModulesSystem/modulesContext'
@@ -14,10 +13,11 @@ import { ModulesSystem } from '../../Context/ModulesSystem/modulesContext'
 export function Dashboard () {
   const [usuario] = useContext(AuthContext)
   const [IGLmodules,, modulesFavorites] = useContext(ModulesSystem)
-  const [usuarioIGL, setUsuarioIGL] = useState([{ idUsuario: 1, NombreV: 'Sistemas', ApPatV: 'DEV', OficinaV: 'NLD', DescripV: 'SISTEMAS' }])
+  const [usuarioIGL, setUsuarioIGL] = useState([{ idUsuario: 1, NombreV: 'Sistemas', ApPatV: 'DEV', OficinaV: 'NLD' }])
   const [modulesFav, setModulesFav] = useState(false)
   const [modulosRecientes, setModulosRecientes] = useState([])
   const [modulesToShowRecent, setModulesToShowRecent] = useState([])
+  const [infoUser, setInfoUser] = useState({ departamento: 'SISTEMAS', iconPath: '/iconSystem/sistemas.svg', colorDept: '#FA1622' })
   const { idUsuarioR } = usuario
 
   let modulesFavToShow = modulesFav
@@ -27,7 +27,16 @@ export function Dashboard () {
   }
 
   useEffect(() => {
-    console.log(modulesFavorites)
+    GetRoutesModules(idUsuarioR)
+      .then(response => {
+        if (response.length !== 0 && response !== undefined) {
+          const { path, DescripV, color } = response[0]
+          setInfoUser({ iconPath: path, departamento: DescripV, colorDept: color })
+        }
+      })
+  }, [])
+
+  useEffect(() => {
     GetFavorites(idUsuarioR)
       .then(module => setModulesFav(module))
     GetRecent(idUsuarioR)
@@ -70,8 +79,8 @@ export function Dashboard () {
                 <p className='nameUser-title'>{`${usuarioIGL[0].NombreV} ${usuarioIGL[0].ApPatV}`}</p>
               </div>
               <div className='departamento-Container'>
-                <RiCodeView className='iconDepartamento' />
-                <p className='departamento-title'>{usuarioIGL[0].DescripV}</p>
+                <img src={`http://192.168.80.220:8080/proyecto${infoUser.iconPath}`} />
+                <p className='departamento-title' style={{ color: infoUser.colorDept }}>{infoUser.departamento}</p>
               </div>
             </div>
             <div className='bottomSection'>
